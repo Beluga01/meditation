@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                       Selector<MainViewModel, AdManager>(
                         builder: (context, adManager, child) {
                           final bannerAd = adManager.bannerAd;
-                          //aaa
+                          //aaaaa
                           return Positioned(
                             bottom: 8.0,
                             left: 20.0,
