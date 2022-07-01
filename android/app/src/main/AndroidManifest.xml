@@ -5,8 +5,8 @@
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
-            android:name=".MainActivity"
             android:exported="true"
+            android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -30,5 +30,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+           android:value="ca-app-pub-8378981904009164~2499046304"/>
     </application>
 </manifest>

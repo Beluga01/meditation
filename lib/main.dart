@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:meditation/di/providers.dart';
 import 'package:meditation/generated/l10n.dart';
+import 'package:meditation/view/home/home_screen.dart';
+import 'package:meditation/view_models/main_view_model.dart';
 import 'package:provider/provider.dart';
 import 'view/intro/intro_screen.dart';
 
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MainViewModel>();
+
     return MaterialApp(
       title: "Meditation",
       localizationsDelegates: [
@@ -29,7 +33,16 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData.dark(),
-      home: IntroScreen(),
+      home: FutureBuilder(
+        future: viewModel.isSkipIntroScreen(),
+        builder: (context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData && snapshot.data == true) {
+            return HomeScreen();
+          } else {
+            return IntroScreen();
+          }
+        },
+      ),
     );
   }
 }
